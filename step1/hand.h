@@ -3,8 +3,8 @@
 
 typedef struct User
 {
-    char name[LENGTH]; //用户名
-    int totalcount;    //登录次数
+    char name[LENGTH];  //用户名
+    int totalcount; //登录次数
 } DataType;
 
 //链表的节点
