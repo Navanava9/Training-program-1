@@ -1,14 +1,15 @@
 #define LENGTH 30
+#define CANT_FIND_FILE -1
 
-typedef struct User_login
+typedef struct User
 {
     char name[LENGTH]; //用户名
     int totalcount;    //登录次数
-} SDataType;
+} DataType;
 
 //链表的节点
-typedef struct SListNode
+typedef struct ListNode
 {
-    SDataType _data;
-    struct SListNode *_PNext;
+    DataType data;
+    struct ListNode *next;
 } Node, *PNode; //封装链表节点和next指针
