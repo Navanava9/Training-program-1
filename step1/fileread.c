@@ -4,7 +4,7 @@
 
 PNode CreateNode(DataType data);
 
-PNode fileread(void)
+int fileread(void)
 {
     char ch;
     int k = 0;
