@@ -12,4 +12,4 @@ typedef struct ListNode
 {
     DataType data;
     struct ListNode *next;
-} Node, *PNode; //封装链表节点和next指针
+} Node,PNode; //封装链表节点和next指针

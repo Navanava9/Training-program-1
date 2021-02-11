@@ -4,7 +4,7 @@
 
 PNode CreateNode(DataType data);
 
-int fileread(void)
+PNode fileread(void)
 {
     char ch;
     int k = 0;
@@ -14,7 +14,7 @@ int fileread(void)
         return CANT_FIND_FILE;
     while (1)
     {
-        while (ch != '\n')
+        while (1)
         {
             ch = fgetc(user_login);
             if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
@@ -22,9 +22,11 @@ int fileread(void)
                 a.name[k] = ch;
                 k++;
             }
-            else
-                continue;
-            PNode n = CreateNode(a);
+            else if (ch == '\n')
+            {
+                PNode n = CreateNode(a);
+                break;
+            }
         }
         k = 0;
     }
