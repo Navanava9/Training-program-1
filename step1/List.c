@@ -13,13 +13,13 @@ PNode CreateNode(DataType data)
     return p;
 }
 
-void PushBack(PNode *Head, DataType data)
+void PushBack(PNode *hand, DataType data)
 {
     PNode NewNode = NULL;
-    PNode temp = *Head;
+    PNode temp = *hand;
     NewNode = CreateNode(data);
-    if (*Head == NULL)
-        *Head = NewNode;
+    if (*hand == NULL)
+        *hand = NewNode;
     else
     {
         while (temp->next)
@@ -30,18 +30,18 @@ void PushBack(PNode *Head, DataType data)
     }
 }
 
-void PopBack(PNode *Head)
+void PopBack(PNode *hand)
 {
-    PNode temp = *Head;
-    if (*Head == NULL)
+    PNode temp = *hand;
+    if (*hand == NULL)
     {
         printf("单链表为空!\n");
         return;
     }
-    else if ((*Head)->next == NULL)
+    else if ((*hand)->next == NULL)
     {
-        free((*Head)->next);
-        *Head = NULL;
+        free((*hand)->next);
+        *hand = NULL;
     }
     else
     {
@@ -54,9 +54,9 @@ void PopBack(PNode *Head)
     }
 }
 
-void DestroyList(PNode *Head)
+void DestroyList(PNode *hand)
 {
-    PNode temp = *Head;
+    PNode temp = *hand;
     PNode del = NULL;
     while (temp)
     {
@@ -65,12 +65,12 @@ void DestroyList(PNode *Head)
         free(del);
         del = NULL;
     }
-    *Head = NULL;
+    *hand = NULL;
 }
 
-void ListTraverse(PNode head)
+void ListTraverse(PNode hand)
 {
-    PNode p = head;
+    PNode p = hand;
     while (p != NULL)
     {
         printf("Name:%s times:%d\n", p->data.name, p->data.totalcount);
@@ -78,9 +78,9 @@ void ListTraverse(PNode head)
     }
 }
 
-void CombineList(PNode *head)
+void CombineList(PNode *hand)
 {
-    PNode p = *head, temp = *head;
+    PNode p = *hand, temp = *hand;
     PNode a = NULL;
     while (p->next != NULL)
     {

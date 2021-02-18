@@ -3,15 +3,6 @@
 #define MALLOC_ERROR -2
 #define CREATE_FILE_ERROR -3;
 
-PNode CreateNode(DataType data);
-void PushBack(PNode *Head, DataType data);
-void PopBack(PNode *Head);
-void DestroyList(PNode *Head);
-void ListTraverse(PNode head);
-void CombineList(PNode *head);
-
-int fileread(void);
-int filewrite(void);
 typedef struct User
 {
     char name[LENGTH];
@@ -24,3 +15,13 @@ typedef struct ListNode
     DataType data;
     struct ListNode *next;
 } Node, *PNode;
+
+PNode CreateNode(DataType data);
+void PushBack(PNode *hand, DataType data);
+void PopBack(PNode *hand);
+void DestroyList(PNode *hand);
+void ListTraverse(PNode hand);
+void CombineList(PNode *hand);
+
+int fileread(void);
+int filewrite(PNode hand);
