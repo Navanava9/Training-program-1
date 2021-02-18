@@ -16,26 +16,26 @@ PNode CreatNode(DataType data)
 void PushBack(PNode *Head, DataType data)
 {
     PNode NewNode = NULL;
-    PNode cur = *Head;
+    PNode temp = *Head;
     NewNode = CreatNode(data);
     if (*Head == NULL)
         *Head = NewNode;
     else
     {
-        while (cur->next)
+        while (temp->next)
         {
-            cur = cur->next;
+            temp = temp->next;
         }
-        cur->next = NewNode;
+        temp->next = NewNode;
     }
 }
 
 void PopBack(PNode *Head)
 {
-    PNode cur = *Head;
+    PNode temp = *Head;
     if (*Head == NULL)
     {
-        printf("单链表为空，不能删除！！！\n");
+        printf("单链表为空!\n");
         return;
     }
     else if ((*Head)->next == NULL)
@@ -45,30 +45,30 @@ void PopBack(PNode *Head)
     }
     else
     {
-        while (cur->next->next != NULL)
+        while (temp->next->next != NULL)
         {
-            cur = cur->next;
+            temp = temp->next;
         }
-        free(cur->next);
-        cur->next = NULL;
+        free(temp->next);
+        temp->next = NULL;
     }
 }
 
 void DestroyList(PNode *Head)
 {
-    PNode cur = *Head;
+    PNode temp = *Head;
     PNode del = NULL;
-    while (cur)
+    while (temp)
     {
-        del = cur;
-        cur = cur->next;
+        del = temp;
+        temp = temp->next;
         free(del);
         del = NULL;
     }
     *Head = NULL;
 }
 
-void link_print(PNode head)
+void ListTraverse(PNode head)
 {
     PNode p = head;
     while (p != NULL)
@@ -80,5 +80,19 @@ void link_print(PNode head)
 
 void CombineList(PNode *head)
 {
-    
-}
+    PNode p = *head, temp = *head;
+    PNode a = NULL;
+    while (p->next != NULL)
+    {
+        while (temp->next != NULL)
+        {
+            if (strcmp(temp->next, p) == 0)
+            {
+                a = temp->next;
+                temp->next = temp->next->next;
+                free(a);
+                p->data.totalcount++;
+            }
+        }
+        p = p->next;
+    }
