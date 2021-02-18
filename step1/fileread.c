@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "hand.h"
 
 int fileread(void)
 {
     char ch;
     int k = 0;
-    DataType a;
     PNode hand;
     FILE *user_login = fopen("text.txt", "r");
     if (user_login == NULL)
         return CANT_FIND_FILE;
     while (1)
     {
+        DataType a;
         while (1)
         {
             ch = fgetc(user_login);
@@ -24,10 +25,13 @@ int fileread(void)
             else if (ch == '\n')
             {
                 a.totalcount = 1;
-                PNode n = CreateNode(a);
                 break;
             }
         }
         k = 0;
+        PushBack(&hand, a);
+        if (ch = EOF)
+            break;
     }
+    fclose(user_login);
 }

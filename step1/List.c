@@ -3,7 +3,7 @@
 #include <string.h>
 #include "hand.h"
 
-PNode CreatNode(DataType data)
+PNode CreateNode(DataType data)
 {
     PNode p = (Node *)malloc(sizeof(Node));
     if (p == NULL)
@@ -17,7 +17,7 @@ void PushBack(PNode *Head, DataType data)
 {
     PNode NewNode = NULL;
     PNode temp = *Head;
-    NewNode = CreatNode(data);
+    NewNode = CreateNode(data);
     if (*Head == NULL)
         *Head = NewNode;
     else
@@ -93,6 +93,7 @@ void CombineList(PNode *head)
                 free(a);
                 p->data.totalcount++;
             }
+            temp = temp->next;
         }
         p = p->next;
     }
