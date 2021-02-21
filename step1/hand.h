@@ -1,3 +1,9 @@
+#pragma once
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
 #define LENGTH 30
 #define CANT_FIND_FILE -1
 #define MALLOC_ERROR -2
