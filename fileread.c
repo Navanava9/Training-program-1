@@ -11,10 +11,10 @@ PNode fileread(void)
     FILE *user_login = fopen("text.txt", "r+");
     if (user_login == NULL)
         exit(1);
-    while (1)
+    while (!feof(user_login))
     {
         DataType a;
-        while (1)
+        while (ch != '\n')
         {
             ch = fgetc(user_login);
             if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
@@ -22,16 +22,10 @@ PNode fileread(void)
                 a.name[k] = ch;
                 k++;
             }
-            else if (ch == '\n')
-            {
-                a.totalcount = 1;
-                break;
-            }
         }
+        a.totalcount = 1;
         k = 0;
         PushBack(&hand, a);
-        if (feof(user_login))
-            break;
     }
     fclose(user_login);
     return hand;

@@ -13,10 +13,10 @@ int filewrite(PNode hand)
         return CREATE_FILE_ERROR;
     while (temp->next != NULL)
     {
-        fwrite(temp->data.name, strlen(temp->data.name), 1, out);
+        fputs(temp->data.name, out);
         fputc(',', out);
         itoa(temp->data.totalcount, c, 10);
-        fwrite(c, strlen(c), 1, out);
+        fputs(c, out);
         fputc('\n', out);
         temp = temp->next;
     }
