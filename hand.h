@@ -4,9 +4,8 @@
 #include <stdlib.h>
 
 #define LENGTH 30
-#define CANT_FIND_FILE -1
-#define MALLOC_ERROR -2
-#define CREATE_FILE_ERROR -3;
+#define CREATE_FILE_ERROR -3
+#define OK 1
 
 typedef struct User
 {
@@ -28,5 +27,5 @@ void DestroyList(PNode *hand);
 void ListTraverse(PNode hand);
 void CombineList(PNode *hand);
 
-int fileread(void);
+PNode fileread(void);
 int filewrite(PNode hand);

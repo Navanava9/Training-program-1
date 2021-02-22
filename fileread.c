@@ -3,14 +3,14 @@
 #include <stdlib.h>
 #include "hand.h"
 
-int fileread(void)
+PNode fileread(void)
 {
     char ch;
     int k = 0;
     PNode hand;
-    FILE *user_login = fopen("text.txt", "r");
+    FILE *user_login = fopen("text.txt", "r+");
     if (user_login == NULL)
-        return CANT_FIND_FILE;
+        exit(1);
     while (1)
     {
         DataType a;
@@ -30,8 +30,9 @@ int fileread(void)
         }
         k = 0;
         PushBack(&hand, a);
-        if (ch = EOF)
+        if (feof(user_login))
             break;
     }
     fclose(user_login);
+    return hand;
 }

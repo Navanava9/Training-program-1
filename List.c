@@ -7,7 +7,7 @@ PNode CreateNode(DataType data)
 {
     PNode p = (Node *)malloc(sizeof(Node));
     if (p == NULL)
-        return MALLOC_ERROR;
+        exit(1);
     p->next = NULL;
     p->data = data;
     return p;
@@ -86,7 +86,7 @@ void CombineList(PNode *hand)
     {
         while (temp->next != NULL)
         {
-            if (strcmp(temp->next, p) == 0)
+            if (strcmp(temp->next->data.name, p->data.name) == 0)
             {
                 a = temp->next;
                 temp->next = temp->next->next;
@@ -97,3 +97,4 @@ void CombineList(PNode *hand)
         }
         p = p->next;
     }
+}

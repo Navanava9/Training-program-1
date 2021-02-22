@@ -1,9 +1,9 @@
 #
-# A simple makefile for managing build of project composed of C source files.一个简单的makefile，用于管理由C源文件组成的项目的生成。
+# A simple makefile for managing build of project composed of C source files.
 #
 
 
-# It is likely that default C compiler is already gcc, but explicitly很可能默认的C编译器已经是gcc了，但是显式的
+# It is likely that default C compiler is already gcc, but explicitly
 # set, just to be sure
 CC = gcc
 
