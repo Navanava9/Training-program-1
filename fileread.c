@@ -13,21 +13,21 @@ PNode fileread(void)
     while (!feof(user_login))
     {
         int x = 0;
-        DataType *a = (DataType *)malloc(sizeof(DataType));
-        char *s = (char *)malloc(LENGTH * sizeof(char));
+        DataType a;
+        char s[LENGTH] = {0};
+        for (int i = 0; i < LENGTH; i++)
+            a.name[i] = 0;
         fgets(s, LENGTH, user_login);
         while (1)
         {
             y = s[x];
             if (y == ',')
                 break;
-            a->name[x] = y;
+            a.name[x] = y;
             x++;
         }
-        a->totalcount = 1;
-        PushBack(&hand, *a);
-        free(s);
-        free(a);
+        a.totalcount = 1;
+        PushBack(&hand, a);
     }
     fclose(user_login);
     return hand;

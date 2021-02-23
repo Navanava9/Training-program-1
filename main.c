@@ -7,7 +7,7 @@ int main(void)
 {
     PNode hand;
     hand = fileread();
-    CombineList(&hand);
+    hand = CombineList(&hand);
     filewrite(hand);
     return 0;
 }
