@@ -29,3 +29,5 @@ PNode CombineList(PNode *hand);
 
 PNode fileread(void);
 int filewrite(PNode hand);
+
+void BubbleSort(PNode *hand);
