@@ -11,7 +11,7 @@ int filewrite(PNode hand)
     out = fopen("result.txt", "w+");
     if (out == NULL)
         return CREATE_FILE_ERROR;
-    while (temp->next != NULL)
+    do
     {
         fputs(temp->data.name, out);
         fputc(',', out);
@@ -19,7 +19,7 @@ int filewrite(PNode hand)
         fputs(c, out);
         fputc('\n', out);
         temp = temp->next;
-    }
+    } while (temp->next != NULL);
     fclose(out);
     return OK;
 }
