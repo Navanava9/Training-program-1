@@ -19,7 +19,7 @@ int filewrite(PNode hand)
         fputs(c, out);
         fputc('\n', out);
         temp = temp->next;
-        if (temp->next != NULL)
+        if (temp->next == NULL)
         {
             fputs(temp->data.name, out);
             fputc(',', out);
