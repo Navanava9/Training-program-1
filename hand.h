@@ -25,7 +25,7 @@ void PushBack(PNode *hand, DataType data);
 void PopBack(PNode *hand);
 void DestroyList(PNode *hand);
 void ListTraverse(PNode hand);
-void CombineList(PNode *hand);
+PNode CombineList(PNode *hand);
 
 PNode fileread(void);
 int filewrite(PNode hand);

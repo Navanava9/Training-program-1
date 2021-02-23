@@ -78,26 +78,27 @@ void ListTraverse(PNode hand)
     }
 }
 
-void CombineList(PNode *hand)
+PNode CombineList(PNode *hand)
 {
     PNode top = *hand;
-    PNode tail = *hand;
-    PNode a;
-    int x;
-    while (top->next != NULL)
+    PNode tail = NULL;
+    PNode r = NULL;
+    while (top != NULL)
     {
+        tail = top;
         while (tail->next != NULL)
         {
-            if (strcmp(top->data.name, tail->next->data.name) == 0)
+            if (strcmp(tail->next->data.name, top->data.name) == 0)
             {
-                a = tail->next;
-                tail->next = tail->next->next;
-                free(a);
+                r = tail->next;
+                tail->next = r->next;
+                free(r);
                 top->data.totalcount++;
             }
-            tail = tail->next;
+            else
+                tail = tail->next;
         }
         top = top->next;
-        x = 1;
     }
+    return *hand;
 }
