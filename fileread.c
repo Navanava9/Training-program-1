@@ -12,8 +12,8 @@ PNode fileread(void)
         exit(1);
     while (!feof(user_login))
     {
-        DataType a;
         int x = 0;
+        DataType *a = (DataType *)malloc(sizeof(DataType));
         char *s = (char *)malloc(LENGTH * sizeof(char));
         fgets(s, LENGTH, user_login);
         while (1)
@@ -21,12 +21,13 @@ PNode fileread(void)
             y = s[x];
             if (y == ',')
                 break;
-            a.name[x] = y;
+            a->name[x] = y;
             x++;
         }
-        a.totalcount = 1;
-        PushBack(&hand, a);
+        a->totalcount = 1;
+        PushBack(&hand, *a);
         free(s);
+        free(a);
     }
     fclose(user_login);
     return hand;
