@@ -5,26 +5,26 @@
 
 PNode fileread(void)
 {
-    char ch;
-    int k = 0;
-    PNode hand;
+    char ch[LENGTH];
+    char y;
+    PNode hand = NULL;
     FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\code\\Training-program-1\\jkl.txt", "r");
     if (user_login == NULL)
         exit(1);
     while (!feof(user_login))
     {
         DataType a;
-        while (ch != '\n')
+        int x = 0;
+        fgets(ch, 100, user_login);
+        while (1)
         {
-            ch = fgetc(user_login);
-            if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
-            {
-                a.name[k] = ch;
-                k++;
-            }
+            y = ch[x];
+            if (y == ',')
+                break;
+            a.name[x] = y;
+            x++;
         }
         a.totalcount = 1;
-        k = 0;
         PushBack(&hand, a);
     }
     fclose(user_login);

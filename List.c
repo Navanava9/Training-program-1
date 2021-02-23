@@ -20,7 +20,7 @@ void PushBack(PNode *hand, DataType data)
     NewNode = CreateNode(data);
     if (*hand == NULL)
         *hand = NewNode;
-    else
+    else if (*hand != NULL)
     {
         while (temp->next)
         {
