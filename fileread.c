@@ -8,7 +8,7 @@ PNode fileread(void)
     char ch;
     int k = 0;
     PNode hand;
-    FILE *user_login = fopen("text.txt", "r+");
+    FILE *user_login = fopen("123123.txt", "r+");
     if (user_login == NULL)
         exit(1);
     while (!feof(user_login))
