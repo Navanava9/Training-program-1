@@ -5,17 +5,18 @@
 
 PNode fileread(void)
 {
-    char ch[LENGTH];
     char y;
+    char *ch;
     PNode hand = NULL;
-    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\code\\Training-program-1\\jkl.txt", "r");
+    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\code\\Training-program-1\\user_login.txt", "r");
     if (user_login == NULL)
         exit(1);
     while (!feof(user_login))
     {
         DataType a;
         int x = 0;
-        fgets(ch, 100, user_login);
+        ch = (char *)malloc(sizeof(char) * LENGTH);
+        fgets(ch, LENGTH, user_login);
         while (1)
         {
             y = ch[x];
@@ -26,6 +27,7 @@ PNode fileread(void)
         }
         a.totalcount = 1;
         PushBack(&hand, a);
+        free(ch);
     }
     fclose(user_login);
     return hand;
