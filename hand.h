@@ -7,9 +7,6 @@
 #define CREATE_FILE_ERROR -3
 #define OK 1
 
-#define N 10
-#define D 10
-
 typedef struct User
 {
     char name[LENGTH];
@@ -36,3 +33,4 @@ int filewrite(PNode hand);
 void BubbleSort(PNode *hand);
 void QuickSort(PNode hand);
 void HeapSort(PNode *hand);
+void RaidSort(PNode hand);

@@ -1,40 +1,88 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 #include "hand.h"
 
-void RadixSort(int num[], int len)
+int SortNum(PNode hand)
 {
-    int i, j, k, l, digit;
-    int allot[10][N];
-
-    memset(allot, 0, sizeof(allot));
-
-    for (i = 1; i <= D; i++)
+    PNode p = hand;
+    int x = 0, count = 0;
+    for (; p != NULL; p = p->next)
     {
-        int flag = 0;
-        for (j = 0; j < len; j++)
+        if (x < p->data.totalcount)
         {
-            digit = GetDigit(num[j], i);
-            k = 0;
-            while (allot[digit][k])
-                k++;
-            allot[digit][k] = num[j];
-            if (digit)
-                flag = 1;
+            x = p->data.totalcount;
         }
-        if (!flag)
-            break;
-        l = 0;
-        for (j = 0; j < 10; j++)
+    }
+    while (x)
+    {
+        x /= 10;
+        count++;
+    }
+    return count;
+}
+
+int IsEmpty(PNode hand)
+{
+    return hand->next == NULL;
+}
+
+int IsLast(PNode hand)
+{
+    return hand->next == NULL;
+}
+
+void MoveNode(PNode L1, PNode L2)
+{
+    PNode temp;
+    while (!IsLast(L1))
+    {
+        L1 = L1->next;
+    }
+    if (L2->next == NULL)
+        exit(-1);
+    temp = L2;
+    L2 = L2->next;
+    temp->next = L2->next;
+    L1->next = L2;
+    L2->next = NULL;
+}
+
+void RaidSort(PNode hand)
+{
+    int bucket = 1;
+    PNode p = hand;
+    PNode temp = hand;
+    while (p->next != NULL)
+    {
+        bucket++;
+        p = p->next;
+    }
+    PNode b[bucket];
+    int i, Element, sum;
+    for (i = 0; i < bucket; i++)
+    {
+        b[i] = temp;
+        temp = temp->next;
+    }
+    int num = SortNum(hand);
+    for (i = 0; i < num; i++)
+    {
+        while (!IsEmpty(hand))
         {
-            k = 0;
-            while (allot[j][k] > 0)
+            Element = hand->data.totalcount;
+            sum = (int)(Element / pow(10, i)) % 10;
+            MoveNode(b[sum], hand);
+        }
+        for (int j = 0; j < 10; j++)
+        {
+            while (!IsEmpty(b[j]))
             {
-                num[l++] = allot[j][k];
-                k++;
+                MoveNode(hand, b[j]);
             }
         }
-        memset(allot, 0, sizeof(allot));
     }
+    for (int i = 0; i < bucket; i++)
+        free(b[i]);
 }
