@@ -5,7 +5,7 @@
 
 void BubbleSort(PNode *hand)
 {
-    int count = 0, num;
+    int count = 1, num;
     PNode p, q, tail;
     p = *hand;
     while (p->next != NULL)

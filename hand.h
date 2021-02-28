@@ -31,3 +31,4 @@ PNode fileread(void);
 int filewrite(PNode hand);
 
 void BubbleSort(PNode *hand);
+void HeapSort(PNode *hand);
