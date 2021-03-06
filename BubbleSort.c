@@ -5,21 +5,20 @@
 
 void BubbleSort(PNode *hand)
 {
-    int count = 1, num;
+    int i, count = 0, num;
     PNode p, q, tail;
-    PNode PHand = (Node *)malloc(sizeof(Node));
-    PHand->next = *hand;
+    p = *hand;
     while (p->next != NULL)
     {
         count++;
         p = p->next;
     }
-    for (int i = 0; i < count - 1; i++)
+    for (i = 0; i < count - 1; i++)
     {
         num = count - i - 1;
-        q = PHand->next;
+        q = (*hand)->next;
         p = q->next;
-        tail = PHand;
+        tail = *hand;
         while (num--)
         {
             if (q->data.totalcount < p->data.totalcount)
@@ -33,5 +32,4 @@ void BubbleSort(PNode *hand)
             p = q->next;
         }
     }
-    free(PHand);
 }

@@ -19,7 +19,7 @@ DataType *Change_A_L(PNode hand)
         array[i] = temp->data;
         temp = temp->next;
     }
-    akereturn array;
+    return array;
 }
 
 PNode Change_L_A(DataType *array)

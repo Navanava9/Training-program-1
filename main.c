@@ -6,9 +6,12 @@
 int main(void)
 {
     PNode hand;
+    PNode p = (Node *)malloc(sizeof(Node));
     hand = fileread();
     hand = CombineList(&hand);
-    BubbleSort(&hand);
+    p->next = hand;
+    // BubbleSort(&p);
     filewrite(hand);
+    DestroyList(&p);
     return 0;
 }
