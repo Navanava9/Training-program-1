@@ -3,39 +3,47 @@
 #include <stdlib.h>
 #include "hand.h"
 
-void swap(PNode p, PNode q)
+void swap(DataType *a, DataType *b)
 {
-    DataType temp = p->data;
-    p->data = q->data;
-    q->data = temp;
+    DataType tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
-
-PNode FindTail(PNode hand)
+//定位
+PNode partion(PNode begin, PNode end)
 {
-    PNode p = hand;
-    while (p->next != NULL)
-        p = p->next;
+    if (begin == end || begin->next == end)
+        return begin;
+    int key = begin->data.totalcount;
+    PNode p = begin;
+    PNode q = begin;
+    while (q != end)
+    {
+        if (q->data.totalcount > key)
+        {
+            p = p->next;
+            swap(&p->data, &q->data);
+        }
+        q = q->next;
+    }
+    swap(&p->data, &begin->data);
     return p;
 }
-
-void QuickSort(PNode hand)
+void quick_sort(PNode begin, PNode end)
 {
-    PNode tail = FindTail(hand);
-    if (hand == tail || hand == NULL || hand == tail->next)
+    if (begin == end || begin->next == end)
         return;
-    PNode p, q;
-    p = q = hand;
-    while (q != tail)
-    {
-        q = q->next;
-        if (q->data.totalcount < hand->data.totalcount)
-        {
+    PNode mid = partion(begin, end);
+    quick_sort(begin, mid);
+    quick_sort(mid->next, end);
+}
 
-            p = p->next;
-            swap(p, q);
-        }
-    }
-    swap(hand, p);
-    QuickSort(hand);
-    QuickSort(p->next);
+void QuickSort(PNode *hand)
+{
+    PNode begin, end, temp;
+    begin = temp = *hand;
+    while (temp->next != NULL)
+        temp = temp->next;
+    end = temp;
+    quick_sort(begin, end->next);
 }

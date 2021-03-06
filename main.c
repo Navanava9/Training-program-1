@@ -10,7 +10,11 @@ int main(void)
     hand = fileread();
     hand = CombineList(&hand);
     p->next = hand;
-    BubbleSort(&p);
+
+    //BubbleSort(&p);
+    QuickSort(&hand);
+    //HeapSort(&p);
+
     filewrite(p->next);
     DestroyList(&p);
     return 0;
