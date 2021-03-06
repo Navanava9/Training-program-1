@@ -6,8 +6,8 @@
 void BubbleSort(PNode *hand)
 {
     int count = 1, num;
-    PNode p, q, tail;
-    p = *hand;
+    PNode p, q, tail, PHand;
+    PHand->next = *hand;
     while (p->next != NULL)
     {
         count++;
@@ -16,9 +16,9 @@ void BubbleSort(PNode *hand)
     for (int i = 0; i < count - 1; i++)
     {
         num = count - i - 1;
-        q = (*hand)->next;
+        q = PHand->next;
         p = q->next;
-        tail = *hand;
+        tail = PHand;
         while (num--)
         {
             if (q->data.totalcount < p->data.totalcount)
