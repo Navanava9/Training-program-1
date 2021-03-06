@@ -33,4 +33,4 @@ int filewrite(PNode hand);
 void BubbleSort(PNode *hand);
 void QuickSort(PNode *hand);
 void HeapSort(PNode *hand);
-void RaidSort(PNode hand);
+void RadixSort(PNode hand);

@@ -9,12 +9,8 @@ int SortNum(PNode hand)
     PNode p = hand;
     int x = 0, count = 0;
     for (; p != NULL; p = p->next)
-    {
         if (x < p->data.totalcount)
-        {
             x = p->data.totalcount;
-        }
-    }
     while (x)
     {
         x /= 10;
@@ -37,9 +33,7 @@ void MoveNode(PNode L1, PNode L2)
 {
     PNode temp;
     while (!IsLast(L1))
-    {
         L1 = L1->next;
-    }
     if (L2->next == NULL)
         exit(-1);
     temp = L2;
@@ -49,7 +43,7 @@ void MoveNode(PNode L1, PNode L2)
     L2->next = NULL;
 }
 
-void RaidSort(PNode hand)
+void RadixSort(PNode hand)
 {
     int bucket = 1;
     PNode p = hand;
@@ -76,12 +70,8 @@ void RaidSort(PNode hand)
             MoveNode(b[sum], hand);
         }
         for (int j = 0; j < 10; j++)
-        {
             while (!IsEmpty(b[j]))
-            {
                 MoveNode(hand, b[j]);
-            }
-        }
     }
     for (int i = 0; i < bucket; i++)
         free(b[i]);

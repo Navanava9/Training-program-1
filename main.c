@@ -12,8 +12,9 @@ int main(void)
     p->next = hand;
 
     //BubbleSort(&p);
-    QuickSort(&hand);
+    //QuickSort(&hand);
     //HeapSort(&p);
+    RadixSort(p);
 
     filewrite(p->next);
     DestroyList(&p);
