@@ -43,36 +43,36 @@ void MoveNode(PNode L1, PNode L2)
     L2->next = NULL;
 }
 
+PNode Init_List(void)
+{
+    PNode p = (Node *)malloc(sizeof(Node));
+    if (p == NULL)
+        exit(0);
+    p->next = NULL;
+    return p;
+}
+
 void RadixSort(PNode hand)
 {
-    int bucket = 1;
-    PNode p = hand;
-    PNode temp = hand;
-    while (p->next != NULL)
+    PNode b[10];
+    int i, data, sum;
+    for (i = 0; i < 10; i++)
     {
-        bucket++;
-        p = p->next;
-    }
-    PNode b[bucket];
-    int i, Element, sum;
-    for (i = 0; i < bucket; i++)
-    {
-        b[i] = temp;
-        temp = temp->next;
+        b[i] = Init_List();
     }
     int num = SortNum(hand);
     for (i = 0; i < num; i++)
     {
         while (!IsEmpty(hand))
         {
-            Element = hand->data.totalcount;
-            sum = (int)(Element / pow(10, i)) % 10;
+            data = hand->next->data.totalcount;
+            sum = (int)(data / pow(10, i)) % 10;
             MoveNode(b[sum], hand);
         }
-        for (int j = 0; j < 10; j++)
+        for (int j = 9; j >= 0; j--)
             while (!IsEmpty(b[j]))
                 MoveNode(hand, b[j]);
     }
-    for (int i = 0; i < bucket; i++)
+    for (int i = 0; i < 10; i++)
         free(b[i]);
 }
