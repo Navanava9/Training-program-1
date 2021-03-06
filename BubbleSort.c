@@ -6,7 +6,8 @@
 void BubbleSort(PNode *hand)
 {
     int count = 1, num;
-    PNode p, q, tail, PHand;
+    PNode p, q, tail;
+    PNode PHand = (Node *)malloc(sizeof(Node));
     PHand->next = *hand;
     while (p->next != NULL)
     {
@@ -32,4 +33,5 @@ void BubbleSort(PNode *hand)
             p = q->next;
         }
     }
+    free(PHand);
 }
