@@ -3,18 +3,21 @@
 #include <stdlib.h>
 #include "hand.h"
 
+int count;
+
 DataType *Change_A_L(PNode hand)
 {
-    int count = 1;
+    int N = 0;
     PNode p = hand;
-    PNode temp = hand;
+    PNode temp = hand->next;
     while (p->next != NULL)
     {
-        count++;
+        N++;
         p = p->next;
     }
-    DataType *array = (DataType *)malloc(count * sizeof(DataType));
-    for (int i = 0; i < count; i++)
+    count = N;
+    DataType *array = (DataType *)malloc(N * sizeof(DataType));
+    for (int i = 0; i < N; i++)
     {
         array[i] = temp->data;
         temp = temp->next;
@@ -24,7 +27,6 @@ DataType *Change_A_L(PNode hand)
 
 PNode Change_L_A(DataType array[])
 {
-    int count = sizeof(*array) / sizeof(DataType);
     PNode hand = NULL;
     PNode p = hand;
     for (int i = 0; i < count; i++)
@@ -33,7 +35,6 @@ PNode Change_L_A(DataType array[])
         p->data = array[i];
         p = p->next;
     }
-    p->next = NULL;
     return hand;
 }
 
@@ -76,7 +77,7 @@ void HeapSort(PNode *hand)
     PNode p = *hand;
     DataType *array = Change_A_L(p);
     DestroyList(&((*hand)->next));
-    int size = sizeof(*array) / sizeof(DataType);
+    int size = count;
     BuildHeap(array, size);
     for (int i = size - 1; i > 0; i--)
     {
@@ -84,5 +85,6 @@ void HeapSort(PNode *hand)
         Down(array, 0, i);
     }
     *hand = Change_L_A(array);
+
     free(array);
 }
