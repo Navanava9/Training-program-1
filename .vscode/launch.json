@@ -8,7 +8,7 @@
             "name": "gcc.exe - 生成和调试活动文件",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${fileDirname}\\main.exe",
+            "program": "C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\code\\Training-program-1\\main.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "C:\\MingW\\mingw64\\bin",
