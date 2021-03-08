@@ -27,7 +27,7 @@ DataType *Change_A_L(PNode hand)
 
 PNode Change_L_A(DataType array[])
 {
-    PNode hand;
+    PNode hand = NULL;
     for (int i = 0; i < count; i++)
         PushBack(&hand, array[i]);
     return hand;
@@ -42,19 +42,19 @@ void _swap(DataType array[], int x, int y)
 
 void Down(DataType array[], int i, int n)
 {
-    int parent = i;
     int child = 2 * i + 1;
+    int key = array[i].totalcount;
     while (child < n)
     {
-        if (child + 1 < n && array[child].totalcount < array[child + 1].totalcount)
-        {
+        if (child + 1 < n && array[child].totalcount > array[child + 1].totalcount)
             child++;
-        }
-        if (array[parent].totalcount > array[child].totalcount)
+        if (key > array[child].totalcount)
         {
-            _swap(array, parent, child);
-            parent = child;
+            _swap(array, i, child);
+            i = child;
         }
+        else
+            break;
         child = child * 2 + 1;
     }
 }
@@ -62,16 +62,12 @@ void Down(DataType array[], int i, int n)
 void BuildHeap(DataType array[], int size)
 {
     for (int i = size / 2 - 1; i >= 0; i--)
-    {
         Down(array, i, size);
-    }
 }
 
 void HeapSort(PNode *hand)
 {
-    PNode p = *hand;
-    DataType *array = Change_A_L(p);
-    DestroyList(&((*hand)->next));
+    DataType *array = Change_A_L(*hand);
     int size = count;
     BuildHeap(array, size);
     for (int i = size - 1; i > 0; i--)
@@ -79,7 +75,7 @@ void HeapSort(PNode *hand)
         _swap(array, 0, i);
         Down(array, 0, i);
     }
-    *hand = Change_L_A(array);
-
+    DestroyList(&((*hand)->next));
+    (*hand)->next = Change_L_A(array);
     free(array);
 }
