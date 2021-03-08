@@ -23,9 +23,7 @@ void PushBack(PNode *hand, DataType data)
     else if (*hand != NULL)
     {
         while (temp->next)
-        {
             temp = temp->next;
-        }
         temp->next = NewNode;
     }
 }

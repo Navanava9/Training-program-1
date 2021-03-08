@@ -27,14 +27,9 @@ DataType *Change_A_L(PNode hand)
 
 PNode Change_L_A(DataType array[])
 {
-    PNode hand = NULL;
-    PNode p = hand;
+    PNode hand;
     for (int i = 0; i < count; i++)
-    {
-        p = (Node *)malloc(sizeof(Node));
-        p->data = array[i];
-        p = p->next;
-    }
+        PushBack(&hand, array[i]);
     return hand;
 }
 
@@ -55,7 +50,7 @@ void Down(DataType array[], int i, int n)
         {
             child++;
         }
-        if (array[parent].totalcount < array[child].totalcount)
+        if (array[parent].totalcount > array[child].totalcount)
         {
             _swap(array, parent, child);
             parent = child;
