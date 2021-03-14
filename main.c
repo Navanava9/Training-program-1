@@ -14,7 +14,8 @@ int main(void)
     //BubbleSort(&p);
     //QuickSort(&hand);
     //HeapSort(&p);
-    RadixSort(p);
+    //RadixSort(p);
+    QSort(&p);
 
     filewrite(p->next);
     DestroyList(&p);

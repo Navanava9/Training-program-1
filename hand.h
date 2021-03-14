@@ -34,3 +34,4 @@ void BubbleSort(PNode *hand);
 void QuickSort(PNode *hand);
 void HeapSort(PNode *hand);
 void RadixSort(PNode hand);
+void QSort(PNode *hand);
