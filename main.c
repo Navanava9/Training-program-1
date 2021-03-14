@@ -13,8 +13,8 @@ int main(void)
 
     //BubbleSort(&p);
     //QuickSort(&hand);
-    HeapSort(&p);
-    //RadixSort(p);
+    //HeapSort(&p);
+    RadixSort(p);
 
     filewrite(p->next);
     DestroyList(&p);
