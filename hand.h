@@ -26,9 +26,11 @@ void PopBack(PNode *hand);
 void DestroyList(PNode *hand);
 void ListTraverse(PNode hand);
 PNode CombineList(PNode *hand);
+void CutHalf(PNode *hand);
 
 PNode fileread(void);
 int filewrite(PNode hand);
+PNode fileread_(void);
 
 void BubbleSort(PNode *hand);
 void QuickSort(PNode *hand);

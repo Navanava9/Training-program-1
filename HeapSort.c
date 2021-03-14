@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "hand.h"
 
 int count;
@@ -67,7 +68,10 @@ void BuildHeap(DataType array[], int size)
 
 void HeapSort(PNode *hand)
 {
+    //time_t star, end;
+    //star = clock();
     DataType *array = Change_A_L(*hand);
+    //end = clock();
     int size = count;
     BuildHeap(array, size);
     for (int i = size - 1; i > 0; i--)

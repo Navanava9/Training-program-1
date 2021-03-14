@@ -100,3 +100,20 @@ PNode CombineList(PNode *hand)
     }
     return *hand;
 }
+
+void CutHalf(PNode *hand)
+{
+    PNode p = *hand;
+    int num = 1;
+    while (p->next)
+    {
+        num++;
+        p = p->next;
+    }
+    int half = num / 2;
+    p = *hand;
+    for (int i = 0; i < half - 1; i++)
+        p = p->next;
+    free(p->next);
+    p->next = NULL;
+}

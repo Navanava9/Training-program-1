@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "hand.h"
+#include <time.h>
 
 int main(void)
 {
@@ -11,11 +12,20 @@ int main(void)
     hand = CombineList(&hand);
     p->next = hand;
 
+    //CutHalf(&hand);
+    //CutHalf(&hand);
+    //CutHalf(&hand);
+
+    //clock_t star, end;
+    //star = clock();
+
     //BubbleSort(&p);
     //QuickSort(&hand);
-    //HeapSort(&p);
+    HeapSort(&p);
     //RadixSort(p);
-    QSort(&p);
+    //QSort(&p);
+
+    //end = clock();
 
     filewrite(p->next);
     DestroyList(&p);
