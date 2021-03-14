@@ -7,7 +7,7 @@ PNode fileread(void)
 {
     char y;
     PNode hand = NULL;
-    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\code\\Training-program-1\\user_login.txt", "r");
+    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\杂货\\code\\Training-program-1\\user_login.txt", "r");
     if (user_login == NULL)
         exit(1);
     while (!feof(user_login))
